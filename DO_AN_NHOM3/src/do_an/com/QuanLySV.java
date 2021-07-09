@@ -6,6 +6,7 @@
 package do_an.com;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,71 +26,53 @@ public class QuanLySV {
         this.listDiem = new ArrayList<>();
     }
 
-    //thêm sinh viên
-    public void themSinhVien() {
-        SinhVien sv = new SinhVien();
-        System.out.println("Nhập họ và tên sinh viên : ");
-        sv.setHoTen(sc.nextLine());
-        System.out.println("Nhập mã sinh viên của sinh viên : ");
-        sv.setMaSV(sc.nextLine());
-        System.out.println("Nhập lớp niên chế của sinh viên : ");
-        sv.setTenLopNC(sc.nextLine());
-        System.out.println("Nhập quê quán của sinh viên : ");
-        sv.setQueQuan(sc.nextLine());
-        System.out.println("Nhập ngày sinh của sinh viên : ");
-        int d = sc.nextInt();
-        int m = sc.nextInt();
-        int y = sc.nextInt();
-        sv.setNgaySinh(LocalDate.of(y, m, d));
-        listSV.add(sv);
-
-    }
-
-    //Quản lý điểm sinh viên
-    public void nhapThongTinMonHoc() {
-        DiemSV[] ds = new DiemSV[10];
-        Double diemTB = null;
-        for (int i = 0; i < ds.length; i++) {
-            ds[i] = new DiemSV(sc.nextLine(), sc.nextInt(), sc.nextDouble());
-            diemTB = diemTB + ds[i].getDiemMH();
-        }
-
-    }
-
     // Tìm kiếm thông tin sinh viên
-    public String timKiemSVtheoTen() {
+    public void timKiemSVtheoTen() {
+        System.out.printf("Nhập tên sinh viên cần tìm:");
         String hoTen = sc.nextLine();
-        for (int i = 0; i < listDiem.size(); i++) {
-            if (listDiem.get(i).getHoTen().equals(hoTen)) {
+        for (int i = 0; i < listSV.size(); i++) {
+            if (listSV.get(i).getHoTen().equals(hoTen) == true) {
                 System.out.println("Thông tin sinh viên mà bạn yêu cầu:");
-                listDiem.get(i).toString();
+                System.out.println(listSV.get(i).toString());
                 break;
-            } else if (listDiem.get(i).getHoTen().equals(hoTen) == false) {
+            } else if (listSV.get(i).getHoTen().equals(hoTen) == false) {
                 System.out.println("Không tìm được tên của sinh viên mà bạn yêu cầu!");
                 break;
             }
         }
-        return null;
     }
 
-    public String timKiemSVtheoMaSV() {
+    public void timKiemSVtheoMaSV() {
+        System.out.printf("Nhập mã sinh viên cần tìm:");
         String masv = sc.nextLine();
-        for (int i = 0; i < listDiem.size(); i++) {
-            if (listDiem.get(i).getMaSV().equals(masv)) {
+        for (int i = 0; i < listSV.size(); i++) {
+            if (listSV.get(i).getMaSV().equals(masv) == true) {
                 System.out.println("Thông tin sinh viên mà bạn yêu cầu:");
-                listDiem.get(i).toString();
+                System.out.println(listSV.get(i).toString());
                 break;
-            } else if (listDiem.get(i).getMaSV().equals(masv) == false) {
+            } else if (listSV.get(i).getMaSV().equals(masv) == false) {
                 System.out.println("Không tìm được mã sinh viên của sinh viên mà bạn yêu cầu!");
                 break;
             }
         }
-        return null;
 
     }
 
+    // thêm thông tin vào danh sách
+    public void themSinhVien(SinhVien a) {
+        listSV.add(a);
+    }
+
+    public void themMonHoc(DiemSV a) {
+        listDiem.add(a);
+    }
+
     // in thông tin sinh viên
-    public void showDS() {
+    public void inDS() {
+        listSV.stream().forEach(ob -> System.out.println(ob));
+    }
+
+    public void inThongTinMonHoc() {
         listDiem.stream().forEach(ob -> System.out.println(ob));
     }
 
@@ -105,7 +88,7 @@ public class QuanLySV {
         System.out.println("7. In danh sách sinh viên theo lớp học phần");
         System.out.println("8. In danh sách học lực của sinh viên");
         System.out.println("0. Thoát");
-        System.out.println("---------------------------");
         System.out.print("Please choose: ");
+        System.out.println("---------------------------");
     }
 }

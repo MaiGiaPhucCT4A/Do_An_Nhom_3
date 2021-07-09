@@ -59,7 +59,6 @@ public class DiemSV extends SinhVien {
 
     @Override
     public String toString() {
-        super.toString();
         return "DiemSV{" + "tenMonHoc=" + tenMonHoc + ", soTC=" + soTC + ", diemMH=" + diemMH + '}';
     }
 }

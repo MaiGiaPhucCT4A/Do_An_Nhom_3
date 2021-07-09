@@ -71,11 +71,17 @@ public class SinhVien {
         this.queQuan = queQuan;
     }
 
-    @Override
+    /*    @Override
     public String toString() {
         String f = getNgaySinh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String str = String.format("Họ Tên: %s\nMã Sinh Viên: %s\nTên Lớp Niên Chế: %s\nNgày Sinh: %s\nQuê Quán: ",
                 getHoTen(), getMaSV(), getTenLopNC(), f);
         return str + getQueQuan();
+    }*/
+    @Override
+    public String toString() {
+        String f = getNgaySinh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return "SinhVien{" + "hoTen=" + hoTen + ", maSV=" + maSV + ", tenLopNC=" + tenLopNC + ", ngaySinh=" + f + ", queQuan=" + queQuan + '}';
     }
+
 }
