@@ -33,6 +33,13 @@ public class DiemSV extends SinhVien {
         this.diemMH = diemMH;
     }
 
+    public DiemSV(String tenMonHoc, int soTC) {
+        this.tenMonHoc = tenMonHoc;
+        this.soTC = soTC;
+    }
+    
+    
+
     public double getDiemMH() {
         return diemMH;
     }
@@ -61,4 +68,5 @@ public class DiemSV extends SinhVien {
     public String toString() {
         return "DiemSV{" + "tenMonHoc=" + tenMonHoc + ", soTC=" + soTC + ", diemMH=" + diemMH + '}';
     }
+   
 }

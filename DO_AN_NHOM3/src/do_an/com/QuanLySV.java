@@ -20,75 +20,240 @@ public class QuanLySV {
     static Scanner sc = new Scanner(System.in);
     List<SinhVien> listSV = new ArrayList<>();
     List<DiemSV> listDiem = new ArrayList<>();
+    List<DiemSV> dsMonHoc = new ArrayList<>();
 
     public QuanLySV() {
         this.listSV = new ArrayList<>();
         this.listDiem = new ArrayList<>();
+        this.dsMonHoc = new ArrayList<>();
+    }
+
+    // Nhập thông tin sinh viên
+    public void themSinhVien() {
+        SinhVien sv = new SinhVien();
+        int i, N;
+        System.out.printf("Nhập số lượng sinh viên:");
+        N = sc.nextInt();
+        sc.nextLine();
+        for (i = 1; i <= N; i++) {
+            System.out.println("=========================");
+            System.out.printf("Nhập họ và tên sinh viên : ");
+            String hoten = sc.nextLine();
+            System.out.printf("Nhập mã sinh viên của sinh viên : ");
+            String masv = sc.nextLine();
+            System.out.printf("Nhập lớp niên chế của sinh viên : ");
+            String lopNC = sc.nextLine();
+            System.out.printf("Nhập quê quán của sinh viên : ");
+            String que = sc.nextLine();
+            System.out.println("Nhập ngày tháng năm sinh của sinh viên : ");
+            System.out.printf("Nhập ngày sinh:");
+            int d = sc.nextInt();
+            System.out.printf("Nhập tháng sinh:");
+            int m = sc.nextInt();
+            System.out.printf("Nhập năm sinh:");
+            int y = sc.nextInt();
+            sc.nextLine();
+            LocalDate birthday = LocalDate.of(y, m, d);
+            sv = new SinhVien(hoten, masv, lopNC, birthday, que);
+            listSV.add(sv);
+        }
+    }
+
+    public void themMonHoc() {
+        DiemSV ds = new DiemSV();
+        for (int i = 1; i <= 10; i++) {
+            System.out.printf("Nhập môn học: ");
+            String monhoc = sc.nextLine();
+            ds.setTenMonHoc(monhoc);
+            System.out.printf("Nhập số tín chỉ: ");
+            int tc = sc.nextInt();
+            ds.setSoTC(tc);
+            ds = new DiemSV(monhoc, tc);
+            dsMonHoc.add(ds);
+        }
+
+        for (int i = 0; i < dsMonHoc.size(); i++) {
+            System.out.printf("%d. ", i);
+            System.out.printf("Môn: %s, số tín chỉ: %d\n", dsMonHoc.get(i).getTenMonHoc(), dsMonHoc.get(i).getSoTC());
+        }
+        /*DiemSV[] dsMonHoc = new DiemSV[10];
+        for (int i = 0; i < dsMonHoc.length; i++) {
+            dsMonHoc[i] = new DiemSV();
+            System.out.printf("Nhập môn học: ");
+            String monhoc = sc.nextLine();
+            dsMonHoc[i].setTenMonHoc(monhoc);
+            System.out.printf("Nhập số tín chỉ: ");
+            int tc = sc.nextInt();
+            dsMonHoc[i].setSoTC(tc);
+        }
+        for (int i = 0; i < dsMonHoc.length; i++) {
+            System.out.printf("%d. ", i);
+            System.out.printf("Môn: %s, số tín chỉ: %d\n", dsMonHoc[i].getTenMonHoc(), dsMonHoc[i].getDiemMH());
+        }*/
+    }
+
+    public void themDiemSinhVien() {
+        DiemSV diemSV = new DiemSV();
+        System.out.println("Nhập mã sinh viên của sinh viên cần thêm môn học:");
+        String msv = sc.nextLine();
+        int count = 0;
+        int tmp = 0;
+        for (int i = 0; i < listSV.size(); i++) {
+            if (listSV.get(i).getMaSV().equals(msv) == true) {
+                count++;
+                tmp = i;
+            }
+        }
+        if (count != 0) {
+
+            System.out.println("Nhập tên môn học:");
+            listDiem.get(tmp).setTenMonHoc(sc.nextLine());
+            System.out.println("Nhập số tín chỉ môn học:");
+            listDiem.get(tmp).setSoTC(sc.nextInt());
+            System.out.println("Nhập điểm môn học:");
+            listDiem.get(tmp).setDiemMH(sc.nextDouble());
+            sc.nextLine();
+            diemSV = new DiemSV(msv, tmp, tmp);
+            listDiem.add(diemSV);
+
+        } else {
+            System.out.println("Không tìm thấy sinh viên có mã sinh viên trong danh sách:");
+
+        }
     }
 
     // Tìm kiếm thông tin sinh viên
-    public void timKiemSVtheoTen() {
-        System.out.printf("Nhập tên sinh viên cần tìm:");
-        String hoTen = sc.nextLine();
-        for (int i = 0; i < listSV.size(); i++) {
-            if (listSV.get(i).getHoTen().equals(hoTen) == true) {
-                System.out.println("Thông tin sinh viên mà bạn yêu cầu:");
-                System.out.println(listSV.get(i).toString());
-                break;
-            } else if (listSV.get(i).getHoTen().equals(hoTen) == false) {
-                System.out.println("Không tìm được tên của sinh viên mà bạn yêu cầu!");
-                break;
-            }
-        }
-    }
-
     public void timKiemSVtheoMaSV() {
+        int count = 0;
         System.out.printf("Nhập mã sinh viên cần tìm:");
         String masv = sc.nextLine();
-        for (int i = 0; i < listSV.size(); i++) {
-            if (listSV.get(i).getMaSV().equals(masv) == true) {
-                System.out.println("Thông tin sinh viên mà bạn yêu cầu:");
-                System.out.println(listSV.get(i).toString());
-                break;
-            } else if (listSV.get(i).getMaSV().equals(masv) == false) {
-                System.out.println("Không tìm được mã sinh viên của sinh viên mà bạn yêu cầu!");
-                break;
+        for (SinhVien sv : listSV) {
+            if (sv.getMaSV().equalsIgnoreCase(masv)) {
+                System.out.println(sv.toString());
+                count++;
             }
         }
-
+        if (count == 0) {
+            System.out.println("Không tìm được mã sinh viên của sinh viên mà bạn yêu cầu!");
+        }
     }
 
-    // thêm thông tin vào danh sách
-    public void themSinhVien(SinhVien a) {
-        listSV.add(a);
-    }
+    //sửa thông tin sinh viên
+    public void suaThongTinSinhVien() {
+        System.out.println("Nhập mã số sinh viên của sinh viên cần thay đổi: ");
+        String msv = sc.nextLine();
+        int count = 0;
+        int tmp = 0;
+        for (int i = 0; i < listSV.size(); i++) {
+            if (listSV.get(i).getMaSV().equals(msv) == true) {
+                count++;
+                tmp = i;
+            }
+        }
+        if (count != 0) {
+            boolean cont = true;
+            do {
+                System.out.println("1.Thay đổi tên sinh viên");
+                System.out.println("2.Thay đổi lớp niên chế");
+                System.out.println("3.Thay đổi ngày sinh");
+                System.out.println("4.Thay đổi quê quán");
+                System.out.println("5.Thoát");
+                System.out.println("-----------------------------------");
+                System.out.println("Chọn: ");
+                int chon = sc.nextInt();
+                sc.nextLine();
+                switch (chon) {
+                    case 1:
+                        System.out.println("Nhập họ và tên mới sinh viên: ");
+                        listSV.get(tmp).setHoTen(sc.nextLine());
+                        break;
+                    case 2:
+                        System.out.println("Nhập tên lớp mới của sinh viên: ");
+                        listSV.get(tmp).setTenLopNC(sc.nextLine());
+                        break;
+                    case 3:
+                        System.out.println("Nhập ngày sinh mới của sinh viên:");
+                        int d = sc.nextInt();
+                        System.out.println("Nhập tháng sinh mới của sinh viên:");
+                        int m = sc.nextInt();
+                        System.out.println("Nhập năm sinh mới của sinh viên:");
+                        int y = sc.nextInt();
+                        listSV.get(tmp).setNgaySinh(LocalDate.of(y, m, d));
+                        break;
+                    case 4:
+                        System.out.println("Nhập quê quán mới của sinh viên:");
+                        listSV.get(tmp).setQueQuan(sc.nextLine());
+                        break;
+                    case 5:
+                        cont = false;
+                        break;
 
-    public void themMonHoc(DiemSV a) {
-        listDiem.add(a);
+                }
+            } while (cont);
+        } else {
+            System.out.println("Không tìm thấy sinh viên có mã số sinh viên: " + msv);
+        }
     }
 
     // in thông tin sinh viên
-    public void inDS() {
+    public void inDSthongTinSV() {
         listSV.stream().forEach(ob -> System.out.println(ob));
     }
 
     public void inThongTinMonHoc() {
-        listDiem.stream().forEach(ob -> System.out.println(ob));
+        for (int i = 0; i < listSV.size(); i++) {
+            /*    if (listSV.get(i).getMaSV().compareTo() == 0) {
+                System.out.println("MaSV=" + listSV.get(i).getMaSV());
+            }*/
+            for (int j = 0; j < listDiem.size(); j++) {
+                System.out.println(" " + listDiem.get(i).toString());
+                break;
+            }
+        }
     }
 
     // menu
     public static void showMenu() {
         System.out.println("-----------MENU------------");
+        System.out.println("0. Tạo thông tin môn học");
         System.out.println("1. Thêm thông tin sinh viên vào danh sách");
         System.out.println("2. Thêm thông tin môn học của sinh viên vào danh sách");
         System.out.println("3. Sửa thông tin sinh viên trong danh sách");
-        System.out.println("4. Tìm kiếm thông tin sinh viên theo họ tên");
-        System.out.println("5. Tìm kiếm thông tin sinh viên theo mã sinh viên");
-        System.out.println("6. In danh sách sinh viên theo lớp niên chế");
-        System.out.println("7. In danh sách sinh viên theo lớp học phần");
-        System.out.println("8. In danh sách học lực của sinh viên");
-        System.out.println("0. Thoát");
+        System.out.println("4. Tìm kiếm thông tin sinh viên theo mã sinh viên");
+        System.out.println("5. In danh sách thông tin cá nhân sinh viên");
+        System.out.println("6. In danh sách điểm của sinh viên");
+        System.out.println("7. In danh sách sinh viên theo lớp niên chế");
+        System.out.println("8. In danh sách sinh viên theo lớp học phần");
+        System.out.println("9. In danh sách học lực của sinh viên");
+        System.out.println("10. Thoát");
         System.out.print("Please choose: ");
         System.out.println("---------------------------");
     }
 }
+/*    public void themDiemSinhVien() {
+        DiemSV diemSV = new DiemSV();
+        Double diemTB = 0.0d;
+        System.out.println("Nhập mã sinh viên cần thêm điểm:");
+        String msv = sc.nextLine();
+        for (int i = 0; i < listSV.size(); i++) {
+            if (listSV.get(i).getMaSV().compareTo(msv) == 0) {
+                for (int j = 0; j < 2; j++) {
+                    System.out.println("=========================");
+                    System.out.printf("Nhập tên môn học:");
+                    String monHoc = sc.nextLine();
+                    System.out.printf("Nhập số tín chỉ:");
+                    int tc = sc.nextInt();
+                    System.out.printf("Nhập điểm của môn học:");
+                    double diem = sc.nextDouble();
+                    diemTB = diemTB + diem;
+                    sc.nextLine();
+                    diemSV = new DiemSV(monHoc, tc, diem);
+                    listDiem.add(diemSV);
+                }
+                break;
+            } else {
+                System.out.println("Không tìm được mã sinh viên của sinh viên mà bạn yêu cầu!");
+                break;
+            }
+        }
+    }*/
