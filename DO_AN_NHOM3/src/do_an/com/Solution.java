@@ -40,7 +40,7 @@ public class Solution {
                     quanLy.inDSthongTinSV();
                     break;
                 case 6:
-                    quanLy.inDiemSinhVien();
+                    quanLy.inDanhSachDiemSinhVien();
                     break;
                 case 7:
                     break;
@@ -48,7 +48,10 @@ public class Solution {
                     break;
                 case 9:
                     break;
-                case 0:
+                case 10:
+                    quanLy.inDiemSinhVien();
+                    break;
+                case 11:
                     quanLy.themMonHoc();
                     break;
             }

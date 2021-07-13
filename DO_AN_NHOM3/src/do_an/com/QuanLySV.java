@@ -55,7 +55,9 @@ public class QuanLySV {
             sc.nextLine();
             LocalDate birthday = LocalDate.of(y, m, d);
             sv = new SinhVien(hoten, masv, lopNC, birthday, que);
+            DiemSV diemsv = new DiemSV(hoten, masv, lopNC, birthday, que);
             listSV.add(sv);
+            listDiem.add(diemsv);
         }
     }
 
@@ -166,10 +168,16 @@ public class QuanLySV {
         String msv = sc.nextLine();
         int count = 0;
         int tmp = 0;
+        int tmp1 = 0;
         for (int i = 0; i < listSV.size(); i++) {
             if (listSV.get(i).getMaSV().equals(msv) == true) {
                 count++;
                 tmp = i;
+            }
+        }
+        for (int i = 0; i < listDiem.size(); i++) {
+            if (listDiem.get(i).getMaSV().equals(msv) == true) {
+                tmp1 = i;
             }
         }
         if (count != 0) {
@@ -187,11 +195,15 @@ public class QuanLySV {
                 switch (chon) {
                     case 1:
                         System.out.println("Nhập họ và tên mới sinh viên: ");
-                        listSV.get(tmp).setHoTen(sc.nextLine());
+                        String hoten = sc.nextLine();
+                        listSV.get(tmp).setHoTen(hoten);
+                        listDiem.get(tmp1).setHoTen(hoten);
                         break;
                     case 2:
                         System.out.println("Nhập tên lớp mới của sinh viên: ");
-                        listSV.get(tmp).setTenLopNC(sc.nextLine());
+                        String lop = sc.nextLine();
+                        listSV.get(tmp).setTenLopNC(lop);
+                        listDiem.get(tmp1).setTenLopNC(lop);
                         break;
                     case 3:
                         System.out.println("Nhập ngày sinh mới của sinh viên:");
@@ -201,10 +213,13 @@ public class QuanLySV {
                         System.out.println("Nhập năm sinh mới của sinh viên:");
                         int y = sc.nextInt();
                         listSV.get(tmp).setNgaySinh(LocalDate.of(y, m, d));
+                        listDiem.get(tmp1).setNgaySinh(LocalDate.of(y, m, d));
                         break;
                     case 4:
                         System.out.println("Nhập quê quán mới của sinh viên:");
-                        listSV.get(tmp).setQueQuan(sc.nextLine());
+                        String que = sc.nextLine();
+                        listSV.get(tmp).setQueQuan(que);
+                        listDiem.get(tmp1).setQueQuan(que);
                         break;
                     case 5:
                         cont = false;
@@ -223,8 +238,25 @@ public class QuanLySV {
     }
 
     public void inDiemSinhVien() {
+        System.out.println("Nhập mã sinh viên cần in điểm:");
+        String msv = sc.nextLine();
+        int count = 0;
+        int tmp = 0;
+        for (int i = 0; i < listDiem.size(); i++) {
+            if (listDiem.get(i).getMaSV().equals(msv) == true) {
+                System.out.println("Họ tên sinh viên: " + listDiem.get(i).getHoTen()
+                        + " -Mã sinh viên: " + " -" + listDiem.get(i).getMaSV() + listDiem.get(i).toString());
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("Không tìm thấy sinh viên trong danh sách điêm!");
+        }
+
+    }
+    public void inDanhSachDiemSinhVien() {
         for (DiemSV diemSV : listDiem) {
-            System.out.println("Họ tên sinh viên: " + diemSV.getHoTen() + " -Mã sinh viên: " + " -" + diemSV.getMaSV() + diemSV.toString());
+            System.out.println("Họ tên sinh viên: " + diemSV.getHoTen() + " -Mã sinh viên: " + " -" +diemSV.getMaSV() +" -"+ diemSV.toString());
         }
     }
 
@@ -241,7 +273,8 @@ public class QuanLySV {
         System.out.println("7. In danh sách sinh viên theo lớp niên chế");
         System.out.println("8. In danh sách sinh viên theo lớp học phần");
         System.out.println("9. In danh sách học lực của sinh viên");
-        System.out.println("10. Thoát");
+        System.out.println("10. In điểm sinh viên:");
+        System.out.println("11. Thoát");
         System.out.print("Please choose: ");
         System.out.println("---------------------------");
     }

@@ -20,6 +20,12 @@ public class DiemSV extends SinhVien {
     public DiemSV() {
     }
 
+    public DiemSV(String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
+        super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
+    }
+
+   
+
     public DiemSV(String tenMonHoc, int soTC, double diemMH, String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
         super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
         this.tenMonHoc = tenMonHoc;
