@@ -61,40 +61,24 @@ public class QuanLySV {
 
     public void themMonHoc() {
         DiemSV ds = new DiemSV();
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.printf("Nhập môn học: ");
             String monhoc = sc.nextLine();
-            ds.setTenMonHoc(monhoc);
             System.out.printf("Nhập số tín chỉ: ");
             int tc = sc.nextInt();
-            ds.setSoTC(tc);
+            sc.nextLine();
             ds = new DiemSV(monhoc, tc);
             dsMonHoc.add(ds);
         }
 
         for (int i = 0; i < dsMonHoc.size(); i++) {
-            System.out.printf("%d. ", i);
-            System.out.printf("Môn: %s, số tín chỉ: %d\n", dsMonHoc.get(i).getTenMonHoc(), dsMonHoc.get(i).getSoTC());
+            System.out.printf("%d. ", i + 1);
+            dsMonHoc.get(i).inDSMonHoc();
         }
-        /*DiemSV[] dsMonHoc = new DiemSV[10];
-        for (int i = 0; i < dsMonHoc.length; i++) {
-            dsMonHoc[i] = new DiemSV();
-            System.out.printf("Nhập môn học: ");
-            String monhoc = sc.nextLine();
-            dsMonHoc[i].setTenMonHoc(monhoc);
-            System.out.printf("Nhập số tín chỉ: ");
-            int tc = sc.nextInt();
-            dsMonHoc[i].setSoTC(tc);
-        }
-        for (int i = 0; i < dsMonHoc.length; i++) {
-            System.out.printf("%d. ", i);
-            System.out.printf("Môn: %s, số tín chỉ: %d\n", dsMonHoc[i].getTenMonHoc(), dsMonHoc[i].getDiemMH());
-        }*/
     }
 
     public void themDiemSinhVien() {
-        DiemSV diemSV = new DiemSV();
-        System.out.println("Nhập mã sinh viên của sinh viên cần thêm môn học:");
+        System.out.printf("Nhập mã sinh viên của sinh viên cần thêm môn học: ");
         String msv = sc.nextLine();
         int count = 0;
         int tmp = 0;
@@ -106,18 +90,56 @@ public class QuanLySV {
         }
         if (count != 0) {
 
-            System.out.println("Nhập tên môn học:");
+            System.out.printf("Nhập tên môn học: ");
             listDiem.get(tmp).setTenMonHoc(sc.nextLine());
-            System.out.println("Nhập số tín chỉ môn học:");
+            System.out.printf("Nhập số tín chỉ môn học: ");
             listDiem.get(tmp).setSoTC(sc.nextInt());
-            System.out.println("Nhập điểm môn học:");
+            System.out.printf("Nhập điểm môn học: ");
             listDiem.get(tmp).setDiemMH(sc.nextDouble());
             sc.nextLine();
-            diemSV = new DiemSV(msv, tmp, tmp);
-            listDiem.add(diemSV);
 
         } else {
             System.out.println("Không tìm thấy sinh viên có mã sinh viên trong danh sách:");
+            System.out.println(" 1.Thêm mới sinh viên:");
+            System.out.println(" 2.Thoát");
+            System.out.println("------------------------------");
+            System.out.println("Chọn: ");
+            int chon = sc.nextInt();
+            sc.nextLine();
+            switch (chon) {
+                case 1:
+                    System.out.println("Nhập họ và tên sinh viên");
+                    String hoten = sc.nextLine();
+                    System.out.printf("Nhập mã sinh viên của sinh viên : ");
+                    String masv = sc.nextLine();
+                    System.out.printf("Nhập lớp niên chế của sinh viên : ");
+                    String lopNC = sc.nextLine();
+                    System.out.printf("Nhập quê quán của sinh viên : ");
+                    String que = sc.nextLine();
+                    System.out.println("Nhập ngày tháng năm sinh của sinh viên : ");
+                    System.out.printf("Nhập ngày sinh:");
+                    int d = sc.nextInt();
+                    System.out.printf("Nhập tháng sinh:");
+                    int m = sc.nextInt();
+                    System.out.printf("Nhập năm sinh:");
+                    int y = sc.nextInt();
+                    LocalDate birthday = LocalDate.of(y, m, d);
+                    SinhVien sv = new SinhVien(hoten, masv, lopNC, birthday, que);
+                    listSV.add(sv);
+                    sc.nextLine();
+                    System.out.println("Nhập tên môn học:");
+                    String tenMonHoc = sc.nextLine();
+                    System.out.println("Nhập số tín chỉ môn học:");
+                    int soTinChi = sc.nextInt();
+                    System.out.println("Nhập điểm môn học:");
+                    double diemMonHoc = sc.nextDouble();
+                    DiemSV diemSinhVien = new DiemSV(tenMonHoc, soTinChi, diemMonHoc, hoten, masv, lopNC, birthday, que);
+                    listDiem.add(diemSinhVien);
+                    break;
+                case 2:
+                    break;
+
+            }
 
         }
     }
@@ -200,15 +222,9 @@ public class QuanLySV {
         listSV.stream().forEach(ob -> System.out.println(ob));
     }
 
-    public void inThongTinMonHoc() {
-        for (int i = 0; i < listSV.size(); i++) {
-            /*    if (listSV.get(i).getMaSV().compareTo() == 0) {
-                System.out.println("MaSV=" + listSV.get(i).getMaSV());
-            }*/
-            for (int j = 0; j < listDiem.size(); j++) {
-                System.out.println(" " + listDiem.get(i).toString());
-                break;
-            }
+    public void inDiemSinhVien() {
+        for (DiemSV diemSV : listDiem) {
+            System.out.println("Họ tên sinh viên: " + diemSV.getHoTen() + " -Mã sinh viên: " + " -" + diemSV.getMaSV() + diemSV.toString());
         }
     }
 

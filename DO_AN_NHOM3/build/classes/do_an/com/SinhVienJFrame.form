@@ -49,30 +49,39 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btn_themSV" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btn_ResetNhapSV" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="btn_suaSV" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btn_inTop10Gioi" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btn_inTopHocLai" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btn_themSV" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btn_ResetNhapSV" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btn_suaSV" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" pref="73" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                                          <Component id="btn_inDSlopNC" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btn_inTop10Gioi" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btn_inDSlopHP" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btn_inDSlopNC" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btn_inTop20Kha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btn_inTopHocLai" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jScrollPane1" alignment="1" pref="778" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" alignment="1" pref="778" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
@@ -110,10 +119,15 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btn_inDSlopHP" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_inTop20Kha" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,48 +146,63 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_themSV" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btn_themSV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_ResetNhapSV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_suaSV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_nhapHoTen" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btn_ResetNhapSV" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btn_inDSlopHP" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="btn_inDSlopNC" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nhapLopNC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_suaSV" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_inTop10Gioi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nhapLopNC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="btn_inTop10Gioi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_inDSlopHP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_date" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_month" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_year" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_inTop20Kha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_date" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_month" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_year" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btn_inTopHocLai" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_inTop20Kha" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_nhapQue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_inTopHocLai" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="187" max="-2" attributes="0"/>
-                  <EmptySpace pref="223" max="32767" attributes="0"/>
+                  <EmptySpace pref="225" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -328,6 +357,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nh&#x1ead;p th&#xf4;ng tin m&#xf4;n h&#x1ecd;c"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

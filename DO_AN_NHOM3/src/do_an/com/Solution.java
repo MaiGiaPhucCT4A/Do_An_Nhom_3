@@ -40,7 +40,7 @@ public class Solution {
                     quanLy.inDSthongTinSV();
                     break;
                 case 6:
-                    quanLy.inThongTinMonHoc();
+                    quanLy.inDiemSinhVien();
                     break;
                 case 7:
                     break;
