@@ -24,6 +24,9 @@ public class Solution {
             System.out.printf("Chọn mục: ");
             chon = sc.nextInt();
             switch (chon) {
+                case 0:
+                    quanLy.themMonHoc();
+                    break;
                 case 1:
                     quanLy.themSinhVien();
                     break;
@@ -52,7 +55,6 @@ public class Solution {
                     quanLy.inDiemSinhVien();
                     break;
                 case 11:
-                    quanLy.themMonHoc();
                     break;
             }
         }

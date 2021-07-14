@@ -24,8 +24,6 @@ public class DiemSV extends SinhVien {
         super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
     }
 
-   
-
     public DiemSV(String tenMonHoc, int soTC, double diemMH, String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
         super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
         this.tenMonHoc = tenMonHoc;
@@ -34,6 +32,13 @@ public class DiemSV extends SinhVien {
     }
 
     public DiemSV(String tenMonHoc, int soTC, double diemMH) {
+        this.tenMonHoc = tenMonHoc;
+        this.soTC = soTC;
+        this.diemMH = diemMH;
+    }
+
+    public DiemSV(String tenMonHoc, int soTC, String hoTen, String maSV, double diemMH) {
+        super(hoTen, maSV);
         this.tenMonHoc = tenMonHoc;
         this.soTC = soTC;
         this.diemMH = diemMH;

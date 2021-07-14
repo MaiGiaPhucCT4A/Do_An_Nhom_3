@@ -31,6 +31,12 @@ public class SinhVien {
         this.queQuan = queQuan;
     }
 
+    public SinhVien(String hoTen, String maSV) {
+        this.hoTen = hoTen;
+        this.maSV = maSV;
+    }
+    
+    
     public String getHoTen() {
         return hoTen;
     }

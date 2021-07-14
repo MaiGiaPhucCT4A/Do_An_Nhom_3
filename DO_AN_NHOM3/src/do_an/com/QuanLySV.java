@@ -82,24 +82,41 @@ public class QuanLySV {
     public void themDiemSinhVien() {
         System.out.printf("Nhập mã sinh viên của sinh viên cần thêm môn học: ");
         String msv = sc.nextLine();
-        int count = 0;
+        int count = 0, kiemtra = 0;
         int tmp = 0;
+        String ht = null;
         for (int i = 0; i < listSV.size(); i++) {
             if (listSV.get(i).getMaSV().equals(msv) == true) {
                 count++;
                 tmp = i;
+                ht = listSV.get(i).getHoTen();
             }
         }
         if (count != 0) {
-
-            System.out.printf("Nhập tên môn học: ");
-            listDiem.get(tmp).setTenMonHoc(sc.nextLine());
-            System.out.printf("Nhập số tín chỉ môn học: ");
-            listDiem.get(tmp).setSoTC(sc.nextInt());
-            System.out.printf("Nhập điểm môn học: ");
-            listDiem.get(tmp).setDiemMH(sc.nextDouble());
-            sc.nextLine();
-
+            do {
+                System.out.printf("Nhập tên môn học: ");
+                String mh = sc.nextLine();
+                //    listDiem.get(tmp).setTenMonHoc(mh);
+                for (int m = 0; m < dsMonHoc.size(); m++) {
+                    if (dsMonHoc.get(m).getTenMonHoc().equals(mh) == true) {
+                        kiemtra++;
+                    }
+                }
+                if (kiemtra != 0) {
+                    System.out.printf("Nhập số tín chỉ môn học: ");
+                    int tc = sc.nextInt();
+                    //    listDiem.get(tmp).setSoTC(sc.nextInt());
+                    System.out.printf("Nhập điểm môn học: ");
+                    double diem = sc.nextDouble();
+                    //    listDiem.get(tmp).setDiemMH(diem);
+                    sc.nextLine();
+                    DiemSV dsDiem = new DiemSV(mh, tc, ht, msv, diem);
+                    listDiem.add(dsDiem);
+                } else if (kiemtra == 0) {
+                    System.out.println("Môn học " + listDiem.get(tmp).getTenMonHoc() + " không tồn tại!");
+                    System.out.println("Xin nhập lại");
+                }
+            } while (kiemtra == 0);
         } else {
             System.out.println("Không tìm thấy sinh viên có mã sinh viên trong danh sách:");
             System.out.println(" 1.Thêm mới sinh viên:");
@@ -254,9 +271,10 @@ public class QuanLySV {
         }
 
     }
+
     public void inDanhSachDiemSinhVien() {
         for (DiemSV diemSV : listDiem) {
-            System.out.println("Họ tên sinh viên: " + diemSV.getHoTen() + " -Mã sinh viên: " + " -" +diemSV.getMaSV() +" -"+ diemSV.toString());
+            System.out.println("Họ tên sinh viên: " + diemSV.getHoTen() + " -Mã sinh viên: " + " -" + diemSV.getMaSV() + " -" + diemSV.toString());
         }
     }
 
