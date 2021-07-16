@@ -35,8 +35,7 @@ public class SinhVien {
         this.hoTen = hoTen;
         this.maSV = maSV;
     }
-    
-    
+
     public String getHoTen() {
         return hoTen;
     }

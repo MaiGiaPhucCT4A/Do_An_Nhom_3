@@ -11,50 +11,36 @@ import java.time.LocalDate;
  *
  * @author LaptopDT
  */
-public class DiemSV extends SinhVien {
+public class MonHoc extends SinhVien {
 
     private String tenMonHoc;
     private int soTC;
     private double diemMH;
+    private double diemTB;
 
-    public DiemSV() {
-    }
-
-    public DiemSV(String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
-        super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
-    }
-
-    public DiemSV(String tenMonHoc, int soTC, double diemMH, String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
-        super(hoTen, maSV, tenLopNC, ngaySinh, queQuan);
+    public MonHoc(String tenMonHoc, int soTC, double diemMH, double diemTB) {
         this.tenMonHoc = tenMonHoc;
         this.soTC = soTC;
         this.diemMH = diemMH;
+        this.diemTB = diemTB;
     }
 
-    public DiemSV(String tenMonHoc, int soTC, double diemMH) {
-        this.tenMonHoc = tenMonHoc;
-        this.soTC = soTC;
-        this.diemMH = diemMH;
+    public MonHoc() {
     }
 
-    public DiemSV(String tenMonHoc, int soTC, String hoTen, String maSV, double diemMH) {
+    public MonHoc(String tenMonHoc, int soTC, double diemMH, String hoTen, String maSV) {
         super(hoTen, maSV);
         this.tenMonHoc = tenMonHoc;
         this.soTC = soTC;
         this.diemMH = diemMH;
     }
 
-    public DiemSV(String tenMonHoc, int soTC) {
-        this.tenMonHoc = tenMonHoc;
-        this.soTC = soTC;
+    public double getDiemTB() {
+        return diemTB;
     }
 
-    public double getDiemMH() {
-        return diemMH;
-    }
-
-    public void setDiemMH(double diemMH) {
-        this.diemMH = diemMH;
+    public void setDiemTB(double diemTB) {
+        this.diemTB = diemTB;
     }
 
     public String getTenMonHoc() {
@@ -73,12 +59,17 @@ public class DiemSV extends SinhVien {
         this.soTC = soTC;
     }
 
-    @Override
-    public String toString() {
-        return "DiemSV{" + "tenMonHoc=" + tenMonHoc + ", soTC=" + soTC + ", diemMH=" + diemMH + '}';
+    public double getDiemMH() {
+        return diemMH;
     }
 
-    public void inDSMonHoc() {
-        System.out.println("tenMonHoc=" + tenMonHoc + ", soTC=" + soTC);
+    public void setDiemMH(double diemMH) {
+        this.diemMH = diemMH;
     }
+
+    @Override
+    public String toString() {
+        return "MonHoc{" + "tenMonHoc=" + tenMonHoc + ", soTC=" + soTC + ", diemMH=" + diemMH + ", diemTB=" + diemTB + '}';
+    }
+
 }
