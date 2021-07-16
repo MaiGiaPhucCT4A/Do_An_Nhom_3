@@ -59,6 +59,13 @@ public class QuanLySV {
         System.out.print("Nhap lua chon:");
     }
 
+    public void menuLoc() {
+        System.out.println("\t5.1.Loc theo lop nien che.");
+        System.out.println("\t5.2.Loc theo lop hoc phan.");
+        System.out.println("\t5.3.Loc theo hoc luc.(Gioi/Kha/Hoc lai)");
+        System.out.print("Nhap lua chon:");
+    }
+
     // Nhập thông tin sinh viên
     public void themThongTinSV(String hoTen, String msv, String lopNC, String que, int d, int y, int m) {
 
@@ -258,6 +265,100 @@ public class QuanLySV {
                 System.out.println("\t" + listDiem.get(j).toString());
             }
         }
+    }
+
+    public void locDanhSachSV() {
+        //    try {
+        menuLoc();
+        Collections.sort(listSV, new MaSVComparator());
+        int i, j;
+        String str;
+//            FileWriter fw = null;
+        //           fw = new FileWriter("E:\\Projects\\Java\\Quickly\\src\\luutru.txt");
+        int lc = sc.nextInt();
+        switch (lc) {
+            case 1:
+                sc.nextLine();
+                System.out.print("nhap ten lop nien che can in danh sach:");
+                str = sc.nextLine();
+                for (i = 0; i < listSV.size(); i++) {
+                    if (listSV.get(i).getTenLopNC().equals(str)) {
+                        //    fw.write(listSV.get(i).toString());
+                        //    fw.write("\n");
+                        System.out.println(listSV.get(i).toString());
+                    }
+                }
+                //    fw.close();
+                break;
+            case 2:
+                sc.nextLine();
+                System.out.print("Nhap ten lop hoc phan can in danh sach:");
+                str = sc.nextLine();
+                for (i = 0; i < listDiem.size(); i++) {
+                    if (listDiem.get(i).getTenMonHoc().equals(str)) {
+                        for (j = 0; j < listSV.size(); j++) {
+                            if (listSV.get(j).getMaSV().equals(listDiem.get(i).getMaSV())) {
+                                //    fw.write(listSV.get(j).toString());
+                                //    fw.write("\n");
+                                System.out.println(listSV.get(i).toString());
+                            }
+                        }
+                    }
+                }
+                //    fw.close();
+                break;
+            case 3:
+                int count;
+                sc.nextLine();
+                System.out.print("Nhap Loai hoc luc/ Hoc lai can in danh sach:");
+                str = sc.nextLine();
+                if ("Gioi".equals(str)) {
+                    count = 0;
+                    for (i = 0; i < listDiem.size(); i++) {
+                        if (listDiem.get(i).getDiemTB() >= 9.0) {
+                            //    fw.write(listSV.get(i).toString());
+                            //    fw.write("\n");
+                            System.out.println(listDiem.get(i).toString());
+                            count++;
+                            if (count == 10) {
+                                break;
+                            }
+                        }
+                    }
+                } else if ("Kha".equals(str)) {
+                    count = 0;
+                    for (i = 0; i < listDiem.size(); i++) {
+                        if (listDiem.get(i).getDiemTB() >= 7.0 && listDiem.get(i).getDiemTB() < 9.0) {
+                            //    fw.write(listSV.get(i).toString());
+                            //    fw.write("\n");
+                            System.out.println(listDiem.get(i).toString());
+                            count++;
+                            if (count == 20) {
+                                break;
+                            }
+                        }
+                    }
+                } else if ("Hoc lai".equals(str)) {
+                    System.out.print("Nhap ten lop hoc phan can in danh sach:");
+                    str = sc.nextLine();
+                    for (i = 0; i < listDiem.size(); i++) {
+                        if (listDiem.get(i).getTenMonHoc().equals(str)) {
+                            for (j = 0; j < listDiem.size(); j++) {
+                                if (listSV.get(j).getMaSV().equals(listDiem.get(i).getMaSV()) && listDiem.get(j).getDiemTB() < 4.0) {
+                                    //    fw.write(listSV.get(j).toString());
+                                    //    fw.write("\n");
+                                    System.out.println(listDiem.get(i).toString());
+                                }
+                            }
+                        }
+                    }
+                }
+            //    fw.close();
+            }
+        /*    } catch (IOException ex) {
+            Logger.getLogger(QuanLiSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
     }
 
     // In danh sách lên bảng
