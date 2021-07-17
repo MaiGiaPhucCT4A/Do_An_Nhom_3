@@ -60,13 +60,13 @@ public class Solution {
                     qlsv.in1SV(msv);
                     break;
                 case 5:
-                    //    qlsv.locDanhSachSV();
+                    qlsv.locDanhSachSV();
                     break;
                 case 6:
                     qlsv.inDS();
                     break;
                 case 8:
-                    //    qlsv.sapXepSV();
+                //    qlsv.sapXepSV();
                     break;
                 case 7:
                     sc.nextLine();
