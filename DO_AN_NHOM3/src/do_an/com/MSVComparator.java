@@ -9,12 +9,14 @@ import java.util.Comparator;
 
 /**
  *
- * @author LaptopDT
+ * @author ACER
  */
-public class MaSVComparator implements Comparator<SinhVien> {
+public class MSVComparator implements  Comparator<SinhVien>{
 
     @Override
     public int compare(SinhVien o1, SinhVien o2) {
-        return o1.getMaSV().compareTo(o2.getMaSV());
+        return o1.getMaSV().compareTo(o2.getMaSV()); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }
+

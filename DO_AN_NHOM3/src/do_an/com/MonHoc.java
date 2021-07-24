@@ -5,42 +5,29 @@
  */
 package do_an.com;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
- * @author LaptopDT
+ * @author ACER
  */
-public class MonHoc extends SinhVien {
+public class MonHoc extends Diem {
 
-    private String tenMonHoc;
-    private int soTC;
-    private double diemMH;
-    private double diemTB;
-
-    public MonHoc(String tenMonHoc, int soTC, double diemMH, double diemTB) {
-        this.tenMonHoc = tenMonHoc;
-        this.soTC = soTC;
-        this.diemMH = diemMH;
-        this.diemTB = diemTB;
-    }
+    String tenMonHoc;
+    int soTinChi;
 
     public MonHoc() {
     }
 
-    public MonHoc(String tenMonHoc, int soTC, double diemMH, String hoTen, String maSV) {
-        super(hoTen, maSV);
+    public MonHoc(String tenMonHoc, int soTinChi) {
         this.tenMonHoc = tenMonHoc;
-        this.soTC = soTC;
-        this.diemMH = diemMH;
+        this.soTinChi = soTinChi;
     }
 
-    public double getDiemTB() {
-        return diemTB;
-    }
-
-    public void setDiemTB(double diemTB) {
-        this.diemTB = diemTB;
+    public MonHoc(String tenMonHoc, int soTinChi, double diemMH, double DTB) {
+        super(diemMH, DTB);
+        this.tenMonHoc = tenMonHoc;
+        this.soTinChi = soTinChi;
     }
 
     public String getTenMonHoc() {
@@ -51,25 +38,18 @@ public class MonHoc extends SinhVien {
         this.tenMonHoc = tenMonHoc;
     }
 
-    public int getSoTC() {
-        return soTC;
+    public int getSoTinChi() {
+        return soTinChi;
     }
 
-    public void setSoTC(int soTC) {
-        this.soTC = soTC;
-    }
-
-    public double getDiemMH() {
-        return diemMH;
-    }
-
-    public void setDiemMH(double diemMH) {
-        this.diemMH = diemMH;
+    public void setSoTinChi(int soTinChi) {
+        this.soTinChi = soTinChi;
     }
 
     @Override
     public String toString() {
-        return "MonHoc{" + "tenMonHoc=" + tenMonHoc + ", soTC=" + soTC + ", diemMH=" + diemMH + ", diemTB=" + diemTB + '}';
+        return "Môn học: " + tenMonHoc + "{ Số tín chỉ= " + soTinChi
+                + ", Điểm môn học= " + getDiemMH() + "}";
     }
 
 }

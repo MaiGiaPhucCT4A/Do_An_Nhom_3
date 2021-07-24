@@ -7,10 +7,12 @@ package do_an.com;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
- * @author LaptopDT
+ * @author ACER
  */
 public class SinhVien {
 
@@ -19,8 +21,18 @@ public class SinhVien {
     private String tenLopNC;
     private LocalDate ngaySinh;
     private String queQuan;
+    private ArrayList<MonHoc> dsMonHoc = new ArrayList<>();
 
     public SinhVien() {
+    }
+
+    public SinhVien(String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan, ArrayList<MonHoc> dsMonHoc) {
+        this.hoTen = hoTen;
+        this.maSV = maSV;
+        this.tenLopNC = tenLopNC;
+        this.ngaySinh = ngaySinh;
+        this.queQuan = queQuan;
+        this.dsMonHoc = new ArrayList<>();
     }
 
     public SinhVien(String hoTen, String maSV, String tenLopNC, LocalDate ngaySinh, String queQuan) {
@@ -31,9 +43,12 @@ public class SinhVien {
         this.queQuan = queQuan;
     }
 
-    public SinhVien(String hoTen, String maSV) {
-        this.hoTen = hoTen;
-        this.maSV = maSV;
+    public ArrayList<MonHoc> getDsMonHoc() {
+        return dsMonHoc;
+    }
+
+    public void setDsMonHoc(ArrayList<MonHoc> dsMonHoc) {
+        this.dsMonHoc = dsMonHoc;
     }
 
     public String getHoTen() {
@@ -76,17 +91,34 @@ public class SinhVien {
         this.queQuan = queQuan;
     }
 
-    /*    @Override
-    public String toString() {
-        String f = getNgaySinh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String str = String.format("Họ Tên: %s\nMã Sinh Viên: %s\nTên Lớp Niên Chế: %s\nNgày Sinh: %s\nQuê Quán: ",
-                getHoTen(), getMaSV(), getTenLopNC(), f);
-        return str + getQueQuan();
-    }*/
     @Override
     public String toString() {
         String f = getNgaySinh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return "SinhVien{" + "hoTen=" + hoTen + ", maSV=" + maSV + ", tenLopNC=" + tenLopNC + ", ngaySinh=" + f + ", queQuan=" + queQuan + '}';
+        return "Sinh viên{" + "Họ tên=" + hoTen + ", Mã SV=" + maSV + ", Lớp niên chế=" + tenLopNC + ", Ngày sinh=" + f + ", Quê quán=" + queQuan + '}';
     }
 
+    public void themMonHoc() {
+        double diem = 0;
+        int tin = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("Nhập số môn sinh viên đăng ký: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        MonHoc monHoc = null;
+        for (int i = 0; i < 2; i++) {
+            monHoc = new MonHoc();
+            System.out.printf("Nhập tên môn học: ");
+            monHoc.setTenMonHoc(sc.nextLine());
+            System.out.printf("Nhập số tín chỉ: ");
+            monHoc.setSoTinChi(sc.nextInt());
+            System.out.printf("Nhập điểm môn học: ");
+            monHoc.setDiemMH(sc.nextDouble());
+            diem += monHoc.getDiemMH() * monHoc.soTinChi;
+            tin += monHoc.soTinChi;
+            monHoc.setDiemTB(diem / tin);
+            sc.nextLine();
+            dsMonHoc.add(monHoc);
+        }
+
+    }
 }

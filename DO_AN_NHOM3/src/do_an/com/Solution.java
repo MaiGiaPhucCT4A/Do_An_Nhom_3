@@ -5,95 +5,56 @@
  */
 package do_an.com;
 
-import static do_an.com.QuanLySV.sc;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author LaptopDT
+ * @author ACER
  */
 public class Solution {
 
     static Scanner sc = new Scanner(System.in);
+// điểm môn học là điểm thi
+    //điểm học phần là điểm trên lớp
 
     public static void main(String[] args) {
 
-        QuanLySV qlsv = new QuanLySV();
-        int lc, n, i;
-        String hoTen = null, msv = null, lopNC = null, que = null;
-        int d = 0, y = 0, m = 0;
+        QuanLySinhVien qlsv = new QuanLySinhVien();
+        int lc;
         while (true) {
             qlsv.menu();
+//            System.out.println("-----------------QUẢN LÝ SINH VIÊN------------------------");
+//        System.out.println("1. Thêm sinh viên");
+//        System.out.println("2. Lọc");
+//        System.out.println("3. Sửa");
+//        System.out.println("4. In danh sách");
+//        System.out.println("5. In sinh viên");
+//        System.out.println("6. Xóa");
+//        System.out.println("----------------------------------------------------------");
             lc = sc.nextInt();
+            sc.nextLine();
             switch (lc) {
                 case 1:
-                    qlsv.themThongTinSV(hoTen, msv, lopNC, que, d, y, m);
+                    qlsv.themSinhVien();
                     break;
                 case 2:
-                    //    sc.nextLine();
-                    //    System.out.print("Nhap msv can xoa:");
-                    msv = sc.nextLine();
-                    /*    if (qlsv.xoaSV(msv) == true) {
-                        System.out.println("Xóa thành công");
-                    } else {
-                        System.out.println("Không tồn tại msv " + msv);
-                    }*/
-                    //    qlsv.xoaSV(msv);       
+                //    qlsv.locDanhSachSv();
                     break;
-
                 case 3:
-                    sc.nextLine();
-                    System.out.print("Nhap msv can sua:");
-                    msv = sc.nextLine();
-                    qlsv.suaThongTinSV(msv);
+                //    qlsv.suaSinhVien();
                     break;
                 case 4:
-                    sc.nextLine();
-                    System.out.print("Nhap msv can tim kiem:");
-                    msv = sc.nextLine();
-                    qlsv.in1SV(msv);
+                    qlsv.in();
                     break;
                 case 5:
-                    qlsv.locDanhSachSV();
+                //    qlsv.inSinhVien();
                     break;
                 case 6:
-                    qlsv.inDS();
-                    break;
-                case 8:
-                //    qlsv.sapXepSV();
+                //    qlsv.xoa();
                     break;
                 case 7:
-                    sc.nextLine();
-                    System.out.print("Nhap msv can them diem:");
-                    msv = sc.nextLine();
-                    if (qlsv.timKiemSV(msv) != -1) {
-                        System.out.print("Nhap so mon hoc can them diem:");
-                        n = sc.nextInt();
-                        sc.nextLine();
-                        for (i = 0; i < n; i++) {
-                            qlsv.themDiemSV(msv);
-                        }
-                        qlsv.nhapDiemSV();
-                    } else {
-                        System.out.println("Ko tim thay sinh vien");
-                    }
                     break;
             }
         }
-
     }
 }
-
-/*    ql.nhapSinhVien();
-        ql.inDS();
-        ql.timKiemSVtheoMaSV();
-        ql.timKiemSVtheoTen();
-        ql.timKiemSVtheoTen();
-        ql.nhapThongTinMonHoc();
-        ql.inThongTinMonHoc();*/
